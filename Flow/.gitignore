@@ -1,0 +1,118 @@
+# Xcode
+## Build generated
+build/
+DerivedData/
+
+## User settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+
+## Other
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift Package Manager
+.swiftpm/
+.build/
+Packages/
+Package.resolved
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+Carthage/Checkouts/
+
+# Accio dependency management
+Dependencies/
+.accio/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/readme.md
+
+# Code coverage
+*.xccovreport
+*.xccovarchive
+
+# Provisioning profiles
+*.mobileprovision
+*.provisionprofile
+
+# macOS files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# SwiftLint cache
+.swiftlint.cache
+
+# Tuist
+Tuist/Dependencies/*
+!Tuist/Dependencies/Lockfile.resolved
+
+# Xcode Cloud / CI artifacts
+.xcresult
+
+# XCTests logs
+*.xcactivitylog
+
+# Archive bundles
+*.xcarchive
+
+# Simulator devices and data (if accidentally copied)
+Library/Developer/CoreSimulator/Devices/
+
+# SPM artifacts cache
+.artifacts/
+
+# JetBrains/CLion/AppCode
+.idea/
+*.iml
+
+# Vim/Emacs/VSCode editors
+*.swp
+*.swo
+*~
+.vscode/
+
+# SwiftData / Core Data generated intermediates
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Localization intermediates
+*.stringsdict~
+
+# Swift Playgrounds app
+UserData/WorkspaceSettings.xcsettings
+
+# Temporary
+*.tmp
+*.temp
