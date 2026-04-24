@@ -78,11 +78,18 @@ enum APIError: Error {
 
 struct APIService {
 
-    let appId = "ca357bc9cfc66493539c3580c1273dab"
+    //let appID = Bundle.main.object(forInfoDictionaryKey: "AppId") as? String ?? ""
+    let appID = "ca357bc9cfc66493539c3580c1273dab"
+
     let BASE_URL = "https://api.openweathermap.org/data/2.5"
     func getCurrentWeather(lat: Double, lon: Double) async throws -> CurrentWeather {
 
-        guard let url = URL(string:  "\(BASE_URL)/weather?lat=\(lat)&lon=\(lon)&appid=\(appId)&units=metric") else{
+        if (appID.isEmpty) {
+            print("Missing AppID")
+            throw APIError.statusNotOk
+        }
+        
+        guard let url = URL(string:  "\(BASE_URL)/weather?lat=\(lat)&lon=\(lon)&appid=\(appID)&units=metric") else{
             throw APIError.invalidUrl
         }
         
@@ -97,6 +104,10 @@ struct APIService {
         }
         
         print("Status:", response.statusCode)
+        
+        if let jsonString = String(data: data, encoding: .utf8) {
+            print(jsonString)
+        }
         
         do {
             let decoder = JSONDecoder()

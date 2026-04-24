@@ -56,22 +56,48 @@ struct ContentView: View {
     @StateObject private var viewModel = WeatherViewModel()
        
    var body: some View {
-       VStack {
-           if let weather = viewModel.weather {
-               Text("\(weather.name)")
-               Text("Temp: \(weather.main.temp, specifier: "%.2f") °C")
-               if (weather.weather.count > 0) {
-                   HStack {
-                       sfSymbol(for: weather.weather[0].id)
-                       Text(weather.weather[0].description.capitalized)
+       GeometryReader { geometry in
+           if let location = viewModel.weather {
+               VStack {
+                   Text("\(location.name.uppercased())")
+                       .frame(maxWidth: .infinity, alignment: .leading)
+                       .font(.largeTitle)
+                       .fontWeight(.bold)
+                       .fontDesign(.rounded)
+                       .padding(.bottom, 10)
+                       .foregroundColor(Color.white)
+                   if (location.weather.count > 0) {
+                       HStack {
+                           sfSymbol(for: location.weather[0].id)
+                               .resizable()
+                               .aspectRatio(contentMode: .fit)
+                               .frame(width: 100, height: 100)
+                               .foregroundColor(Color.white)
+                               .clipped()
+                           Text("\(location.main.temp, specifier: "%.2f")°")
+                               .font(.system(size: 50, weight: .bold, design: .rounded))
+                               .foregroundColor(Color.white)
+                       }
+                       Text(location.weather[0].description.capitalized)
+                           .font(.footnote)
+                           .foregroundColor(Color.white)
+                       Text("H:\(location.main.temp_max, specifier: "%.2f")° L:\(location.main.temp_min, specifier: "%.2f")° ")
+                           .font(.footnote)
+                           .foregroundColor(Color.white)
                    }
                }
+               .padding()
+               .background(Color.blue, in: RoundedRectangle(cornerRadius: 15))
+               .shadow(color: Color.white.opacity(100.0/255.0), radius: 15)
+               .frame(width: geometry.size.width, height: geometry.size.height, alignment: .top)
+               
            } else if let error = viewModel.errorMessage {
                Text("Error: \(error)")
            } else {
                Text("Loading...")
            }
        }
+       .padding()
        .onAppear {
            viewModel.loadWeather()
        }
@@ -80,4 +106,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .background(Color.black)
 }

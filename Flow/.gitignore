@@ -116,3 +116,5 @@ UserData/WorkspaceSettings.xcsettings
 # Temporary
 *.tmp
 *.temp
+
+Secrets.xcconfig
