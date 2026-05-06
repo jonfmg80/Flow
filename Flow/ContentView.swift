@@ -73,12 +73,12 @@ struct ContentView: View {
        
     var body: some View {
         ZStack {
-           WeatherBackgroundView()
-           content
-           .onAppear {
-               viewModel.loadWeather()
-           }
-       }
+            WeatherBackgroundView()
+            content
+        }
+        .task {
+            viewModel.loadWeather()
+        }
    }
     
     @ViewBuilder
