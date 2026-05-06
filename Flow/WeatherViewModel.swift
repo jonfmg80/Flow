@@ -28,6 +28,9 @@ class WeatherViewModel: ObservableObject {
                 let lat = location.coordinate.latitude
                 let lon = location.coordinate.longitude
                 
+//                let lat = 14.3939
+//                let lon = 121.0412
+                
                 let result = try await apiService.getCurrentWeather(lat: lat, lon: lon)
                 let forecastResult = try await apiService.getForecast(lat: lat, lon: lon)
                 
@@ -35,28 +38,6 @@ class WeatherViewModel: ObservableObject {
                 
                 self.weather = result
                 self.forecast = forecastResult
-                
-            } catch {
-                self.errorMessage = error.localizedDescription
-            }
-        }
-    }
-    
-    func loadForecast() {
-        Task {
-            do {
-                if location == nil {
-                    location = try await locationManager.requestLocation()
-                }
-                
-                if let loc = location {
-                    let lat = loc.coordinate.latitude
-                    let lon = loc.coordinate.longitude
-                    
-                    let result = try await apiService.getCurrentWeather(lat: lat, lon: lon)
-                    
-                    self.weather = result
-                }
                 
             } catch {
                 self.errorMessage = error.localizedDescription
