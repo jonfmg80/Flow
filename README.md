@@ -26,7 +26,6 @@ flowchart TD
     A[ContentView<br/>SwiftUI View] --> B[WeatherViewModel<br/>ViewModel]
     B --> C[APIService<br/>Networking Layer]
     C --> D[OpenWeather REST API]
-
     D --> E[Weather Data Structs / Models]
     E --> C
     C --> B
