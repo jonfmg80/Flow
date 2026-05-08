@@ -13,3 +13,7 @@ struct WeatherBackgroundView: View {
             .ignoresSafeArea()
     }
 }
+
+#Preview {
+    WeatherBackgroundView()
+}

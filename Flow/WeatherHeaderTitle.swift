@@ -26,3 +26,8 @@ struct WeatherHeaderTitle: View {
         .frame(maxWidth: .infinity, alignment: .init(horizontal: .leading, vertical: .center))
     }
 }
+
+#Preview {
+    WeatherHeaderTitle(locationName: "Rome")
+        .background(Color.black)
+}
